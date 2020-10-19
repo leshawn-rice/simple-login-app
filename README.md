@@ -1,4 +1,4 @@
-#Simple Flask Login Application
+# Simple Flask Login Application
 
-##Uses Bootstrap for styling
-##Uses jQuery on profile page for logout event listener
+## Uses Bootstrap for styling
+## Uses jQuery on profile page for logout event listener
