@@ -30,7 +30,7 @@ class UserList(object):
         file = open(filename, 'r')
         for line in file:
             user_info = line.split(':')
-            user = User(user_info[0], user_info[1])
+            user = User(user_info[0], user_info[1], user_info[2])
             self.users.add(user)
         file.close()
 
@@ -77,7 +77,7 @@ class User(object):
     Class that stores user information
     '''
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, created_at=None):
         '''
         str:
             username
@@ -89,7 +89,10 @@ class User(object):
         '''
         self.username = username.strip()
         self.password = password.strip()
-        self.created_at = self.get_created_time()
+        if not created_at:
+            self.created_at = self.get_created_time()
+        else:
+            self.created_at = created_at
 
     def __repr__(self):
         return f'User(username={self.username}, password={self.password})'
@@ -101,7 +104,7 @@ class User(object):
         it into a readable string.
         '''
         raw_time = datetime.now()
-        return raw_time.strftime('%m/%d/%Y at %H:%M:%S')
+        return raw_time.strftime('%m/%d/%Y at %H.%M.%S')
 
     def write_to_file(self, filename):
         '''
@@ -111,5 +114,5 @@ class User(object):
         attributes to the given file.
         '''
         file = open(filename, 'a')
-        file.write(f'{self.username}:{self.password}\n')
+        file.write(f'{self.username}:{self.password}:{self.created_at}\n')
         file.close()

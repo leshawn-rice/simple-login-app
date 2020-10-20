@@ -12,7 +12,6 @@ USER_LIST.get_users_from_file(users_filename)
 logged_in_user = None
 
 # Need to add created_at to users.txt
-# Add doctests
 
 
 @app.route('/')

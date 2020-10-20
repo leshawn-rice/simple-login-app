@@ -1,8 +1,8 @@
-if (location.href === 'http://localhost:5000/show_profile') {
+if (location.pathname === '/show_profile') {
   $(() => {
     $logoutButton = $('button')
     $logoutButton.on('click', () => {
-      location = 'http://localhost:5000/'
+      location = '/'
     });
   });
 }
