@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template, redirect, url_for
-from flask_debugtoolbar import DebugToolbarExtension
 from user import User, UserList
 
 app = Flask(__name__)
@@ -8,8 +7,6 @@ users_filename = 'users.txt'
 
 USER_LIST = UserList()
 USER_LIST.get_users_from_file(users_filename)
-
-# logged_in_user = None
 
 
 @app.route('/')
