@@ -1,8 +1,7 @@
 # Simple Flask Login Application
 
 ## Uses Bootstrap for styling
-## Uses jQuery on profile page for logout event listener,
-## and form validation
+## Uses jQuery on profile page for logout event listener and form validation
 
 ### This is not intended to be a secure login form
 ### This is intended to mini test app to test functionality
