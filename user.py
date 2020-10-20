@@ -2,8 +2,6 @@ from datetime import datetime
 
 # Generate a token for users for auth
 
-# Add doctests
-
 
 class UserList(object):
     '''
