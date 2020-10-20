@@ -12,7 +12,7 @@
 ## The index page on load. Contains a bootstrap card with a form for username and password.
 ![Landing Page (Login Form) if username taken and password invalid](/assets/images/username_taken.jpg "Index Page for taken username")
 ## The index page after an unsuccessful login attempt. If username exists but password does not match the password on file, will display "Username Taken" text.
-![Landing Page (Login Form) with username or password includes ":"](/assets/invalid_character.jpg "Index Page for invalid input")
+![Landing Page (Login Form) with username or password includes ":"](/assets/images/invalid_character.jpg "Index Page for invalid input")
 ## The index page if a user attempts to create a username or password that includes the ":" character.
 ![Landing Page (Login Form) if password invalid](/assets/images/invalid_password.jpg "Index Page for invalid password")
 ## The index page if a user attempts to create a password that is not 8+ characters with 1+ uppercase and 1+ lowercase letters
