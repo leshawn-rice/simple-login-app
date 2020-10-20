@@ -4,7 +4,7 @@
 ## Uses jQuery on profile page for logout event listener and on index page for form validation
 
 ### This is not intended to be a secure login form
-### This is intended to mini test app to test functionality
+### This is intended to be a mini test app to test functionality
 
 # Demo
 
