@@ -16,6 +16,8 @@ def login_form():
     from an unsuccessful request, show
     username taken text
     '''
+    global logged_in_user
+    logged_in_user = None
     try:
         username_taken = request.args['username_taken']
         return render_template('form.html', username_taken=bool(username_taken))
@@ -39,11 +41,11 @@ def authenticate_user():
     if not (attempted_user):
         logged_in_user = USER_LIST.add_user_to_list(username, password)
         logged_in_user.write_to_file(users_filename)
-        return redirect(url_for('show_profile'))
+        return redirect('/show_profile')
     else:
         if attempted_user.password == password:
             logged_in_user = attempted_user
-            return redirect(url_for('show_profile'))
+            return redirect('/show_profile')
         else:
             return redirect(url_for('login_form', username_taken=True))
 
@@ -55,6 +57,9 @@ def show_profile():
     the logged in user and
     renders the profile template
     '''
-    username = logged_in_user.username
-    created_at = logged_in_user.created_at
-    return render_template('profile.html', username=username, created_at=created_at)
+    if (logged_in_user == None):
+        return redirect('/')
+    else:
+        username = logged_in_user.username
+        created_at = logged_in_user.created_at
+        return render_template('profile.html', username=username, created_at=created_at)
