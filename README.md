@@ -4,7 +4,7 @@
 ## Uses jQuery on profile page for logout event listener
 
 ### This is not intended to be a secure login form
-### This is intended to be a boilerplate for a future login system
+### This is intended to mini test app to test functionality
 
 # Demo
 
@@ -14,3 +14,8 @@
 ## The index page after an unsuccessful login attempt. If username exists but password does not match the password on file, will display "Username Taken" text.
 ![Profile Page](/assets/images/profile.jpg "Profile Page")
 ## The profile page on load. The logout button will redirect the user to the index page
+
+# Future Updates:
+
+### v2 will include doctests for class methods 
+### v3 will include tests for view functions
