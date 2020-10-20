@@ -6,7 +6,7 @@ if (location.pathname === '/show_profile') {
     });
   });
 }
-else {
+else if (location.pathname === '/') {
   $form = $('form')
   $(() => {
     $form.on('submit', (event) => {
