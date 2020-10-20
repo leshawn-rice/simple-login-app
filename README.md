@@ -22,5 +22,4 @@
 
 # Future Updates:
 
-### v2 will include doctests for class methods 
-### v3 will include tests for view functions
+## Future versions may include unit tests
