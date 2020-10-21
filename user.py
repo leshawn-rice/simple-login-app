@@ -1,7 +1,5 @@
 from datetime import datetime
 
-# Generate a token for users for auth
-
 
 class UserList(object):
     '''
