@@ -38,15 +38,17 @@ def authenticate_user():
     '''
     username = request.form['username']
     password = request.form['password']
-    attempted_user = USER_LIST.check_user_in_list(username)
+
+    potential_user = USER_LIST.check_user_in_list(username)
     global logged_in_user
-    if not (attempted_user):
+
+    if not (potential_user):
         logged_in_user = USER_LIST.add_user_to_list(username, password)
         logged_in_user.write_to_file(users_filename)
         return redirect('/show_profile')
     else:
-        if attempted_user.password == password:
-            logged_in_user = attempted_user
+        if potential_user.password == password:
+            logged_in_user = potential_user
             return redirect('/show_profile')
         else:
             return redirect(url_for('login_form', username_taken=True))
