@@ -8,6 +8,8 @@ users_filename = 'users.txt'
 USER_LIST = UserList()
 USER_LIST.get_users_from_file(users_filename)
 
+logged_in_user = None
+
 
 @app.route('/')
 def login_form():
@@ -57,6 +59,7 @@ def show_profile():
     the logged in user and
     renders the profile template
     '''
+    global logged_in_user
     if (logged_in_user == None):
         return redirect('/')
     else:
