@@ -61,7 +61,7 @@ class UserList(object):
         str:
             password
         creates a new User instance and adds it to 
-        the users attribute
+        the users attribute, then returns it
         '''
         user = User(username, password)
         self.users.add(user)
@@ -97,7 +97,7 @@ class User(object):
         '''
         Gets the current raw time data from
         the now method on datetime, and parses
-        it into a readable string.
+        it into a readable string. Returns it
         '''
         raw_time = datetime.now()
         return raw_time.strftime('%m/%d/%Y at %H.%M.%S')
