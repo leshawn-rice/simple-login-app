@@ -91,7 +91,7 @@ class User(object):
             self.created_at = created_at
 
     def __repr__(self):
-        return f'User(username={self.username}, password={self.password})'
+        return f'User(username={self.username}, password={self.password}, created_at={self.created_at})'
 
     def get_created_time(self):
         '''
