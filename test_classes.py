@@ -16,8 +16,8 @@ class UserListTestCase(TestCase):
         self.test_list = UserList()
         self.test_filename = 'static/test_users.txt'
         self.test_empty_filename = 'static/test_empty_users.txt'
-        self.test_usernames = ['username', 'leshawnrice', 'kellieconnors']
-        self.test_passwords = ['Password1', 'Louis123', 'Kellie321']
+        self.test_usernames = ['username', 'testuser', 'futureuser']
+        self.test_passwords = ['Password1', 'testpassword', 'FuturePassword1']
         self.test_created_ats = ['01/01/0001 at 00.00.00',
                                  '10/22/2020 at 15.17.28',
                                  '10/20/2020 at 08.39.11']
@@ -62,7 +62,8 @@ class UserListTestCase(TestCase):
                 self.test_list.check_user_in_list(username), User)
             self.assertEqual(
                 username, self.test_list.check_user_in_list(username).username)
-        self.assertIsNone(self.test_list.check_user_in_list('billy'))
+        self.assertIsNone(self.test_list.check_user_in_list(
+            'usernameThatDoesntExist'))
 
     def test_add_user_to_list(self):
         self.test_list.add_user_to_list('testuser', 'testpassword')
