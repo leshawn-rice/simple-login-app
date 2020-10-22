@@ -16,11 +16,12 @@ class UserListTestCase(TestCase):
         self.test_list = UserList()
         self.test_filename = 'static/test_users.txt'
         self.test_empty_filename = 'static/test_empty_users.txt'
+        self.test_users = {
+            'username', 'Password1', '01/01/0001 at 00.00.00',
+            'testuser', 'testpassword', '10/22/2020 at 15.17.28',
+            'futureuser', 'FuturePassword1', '10/20/2020 at 08.39.11'
+        }
         self.test_usernames = ['username', 'testuser', 'futureuser']
-        self.test_passwords = ['Password1', 'testpassword', 'FuturePassword1']
-        self.test_created_ats = ['01/01/0001 at 00.00.00',
-                                 '10/22/2020 at 15.17.28',
-                                 '10/20/2020 at 08.39.11']
 
     def tearDown(self):
         file = open(self.test_empty_filename, 'w')
@@ -38,9 +39,9 @@ class UserListTestCase(TestCase):
         self.assertEqual(len(self.test_list.users), 3)
 
         for user in self.test_list.users:
-            self.assertIn(user.username, self.test_usernames)
-            self.assertIn(user.password, self.test_passwords)
-            self.assertIn(user.created_at, self.test_created_ats)
+            self.assertIn(user.username, self.test_users)
+            self.assertIn(user.password, self.test_users)
+            self.assertIn(user.created_at, self.test_users)
 
     def test_write_users_to_file(self):
         self.test_list.get_users_from_file(self.test_filename)
@@ -51,9 +52,9 @@ class UserListTestCase(TestCase):
         file.close()
 
         for user in users:
-            self.assertIn(user[0].strip(), self.test_usernames)
-            self.assertIn(user[1].strip(), self.test_passwords)
-            self.assertIn(user[2].strip(), self.test_created_ats)
+            self.assertIn(user[0].strip(), self.test_users)
+            self.assertIn(user[1].strip(), self.test_users)
+            self.assertIn(user[2].strip(), self.test_users)
 
     def test_check_user_in_list(self):
         self.test_list.get_users_from_file(self.test_filename)
