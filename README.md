@@ -20,6 +20,10 @@
 ## The profile page on load. The logout button will redirect the user to the index page
 
 
+# Update!
+
+### Unit tests for classes have been added!
+
 # Future Updates:
 
-### Future versions may include unit tests
+### Future versions will include integration tests
