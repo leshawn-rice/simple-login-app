@@ -88,7 +88,7 @@ class User(object):
         if not created_at:
             self.created_at = self.get_created_time()
         else:
-            self.created_at = created_at
+            self.created_at = created_at.strip()
 
     def __repr__(self):
         return f'User(username={self.username}, password={self.password}, created_at={self.created_at})'
