@@ -42,6 +42,7 @@ class UserListTestCase(TestCase):
 
     def test_instantiation(self):
         '''
+        Testing if new UserList instance is valid
         Assertions:
                     self.test_list is instance of UserList
                     self.test_list.users is instance of set
@@ -51,6 +52,7 @@ class UserListTestCase(TestCase):
 
     def test_get_users_from_file(self):
         '''
+        Testing get_users_from_file() method
         Assertions:
                     Passing an invalid filename raises an error
                     self.test_users.users has a length of 3 (with current test values)
@@ -68,6 +70,7 @@ class UserListTestCase(TestCase):
 
     def test_write_users_to_file(self):
         '''
+        Testing write_users_to_file() method
         Assertions:
                     Username for each user is in self.test_users
                     Password for each user is in self.test_users
@@ -87,6 +90,7 @@ class UserListTestCase(TestCase):
 
     def test_check_user_in_list(self):
         '''
+        Testing check_user_in_list() method
         Assertions:
                     With user that should exist, returns an instance of User
                     With user that does exist, returns user whose username is correct
@@ -103,6 +107,7 @@ class UserListTestCase(TestCase):
 
     def test_add_user_to_list(self):
         '''
+        Testing add_user_to_list() method
         Assertions:
                     Each user added is an instance of User
                     Each user added has the correct username
@@ -134,6 +139,7 @@ class UserTestCase(TestCase):
 
     def test_instantiation(self):
         '''
+        Testing if new User instance is valid
         Assertions:
                     test_user added is an instance of User
                     test_user has the correct username
@@ -147,6 +153,7 @@ class UserTestCase(TestCase):
 
     def test_get_created_time(self):
         '''
+        Testing get_created_time() method
         Assertions:
                     Return val from get_created_time() is a string
                     Return val from get_created_time() has a length of 22 (XX/XX/XX at XX.XX.XX)
@@ -156,6 +163,7 @@ class UserTestCase(TestCase):
 
     def test_write_to_file(self):
         '''
+        Testing write_to_file() method
         Assertions:
                     written file username is correct
                     written file password is correct

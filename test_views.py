@@ -17,6 +17,7 @@ class LoginViewsTestCase(TestCase):
 
     def test_login_form(self):
         '''
+        Testing login form (index page)
         Assertions:
                     Index path is '/'
                     Index status code is 200 (ok)
@@ -35,6 +36,7 @@ class LoginViewsTestCase(TestCase):
 
     def test_authenticate_login(self):
         '''
+        Testing Authenticate login page
         Assertions (New Username | Existing Username & Correct Password):
                     Auth path is '/authenticate-login'
                     Auth status code is 302 (redirect)
@@ -67,6 +69,7 @@ class LoginViewsTestCase(TestCase):
 
     def test_show_profile(self):
         '''
+        Testing profile page
         Assertions:
                     Profile path is '/show-profile'
                     Profile status code is 200 (ok)
