@@ -11,6 +11,24 @@ USER_LIST.get_users_from_file(users_filename)
 logged_in_user = None
 
 
+def check_auth(auth_data):
+    [potential_user, username, password] = auth_data
+
+    logged_in_user = None
+
+    if not (potential_user):
+        logged_in_user = USER_LIST.add_user_to_list(username, password)
+        logged_in_user.write_to_file(users_filename)
+        redirect_url = ('/show-profile')
+    else:
+        if potential_user.password == password:
+            logged_in_user = potential_user
+            redirect_url = ('/show-profile')
+        else:
+            redirect_url = url_for('login_form', username_taken=True)
+    return logged_in_user, redirect_url
+
+
 @app.route('/')
 def login_form():
     '''
@@ -42,18 +60,13 @@ def authenticate_user():
     password = request.form['password']
 
     potential_user = USER_LIST.check_user_in_list(username)
-    global logged_in_user
 
-    if not (potential_user):
-        logged_in_user = USER_LIST.add_user_to_list(username, password)
-        logged_in_user.write_to_file(users_filename)
-        return redirect('/show-profile')
-    else:
-        if potential_user.password == password:
-            logged_in_user = potential_user
-            return redirect('/show-profile')
-        else:
-            return redirect(url_for('login_form', username_taken=True))
+    auth_data = [potential_user, username, password]
+
+    global logged_in_user
+    logged_in_user, redirect_url = check_auth(auth_data)
+
+    return redirect(redirect_url)
 
 
 @app.route('/show-profile')
