@@ -18,8 +18,10 @@ def login_form():
     from an unsuccessful request, show
     username taken text
     '''
+    logged_out = request.args.get('logged_out', None)
     global logged_in_user
-    logged_in_user = None
+    if logged_out:
+        logged_in_user = None
     try:
         username_taken = request.args['username_taken']
         return render_template('form.html', username_taken=bool(username_taken))
@@ -27,7 +29,7 @@ def login_form():
         return render_template('form.html')
 
 
-@app.route('/authenticate_login', methods=['POST'])
+@app.route('/authenticate-login', methods=['POST'])
 def authenticate_user():
     '''
     Accepts a username and password as form data. 
@@ -45,16 +47,16 @@ def authenticate_user():
     if not (potential_user):
         logged_in_user = USER_LIST.add_user_to_list(username, password)
         logged_in_user.write_to_file(users_filename)
-        return redirect('/show_profile')
+        return redirect('/show-profile')
     else:
         if potential_user.password == password:
             logged_in_user = potential_user
-            return redirect('/show_profile')
+            return redirect('/show-profile')
         else:
             return redirect(url_for('login_form', username_taken=True))
 
 
-@app.route('/show_profile')
+@app.route('/show-profile')
 def show_profile():
     '''
     Gets info from

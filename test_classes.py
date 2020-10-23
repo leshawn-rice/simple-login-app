@@ -24,9 +24,8 @@ class UserListTestCase(TestCase):
         self.test_usernames = ['username', 'testuser', 'futureuser']
 
     def tearDown(self):
-        file = open(self.test_empty_filename, 'w')
-        file.write('')
-        file.close()
+        with open(self.test_empty_filename, 'w') as file:
+            file.write('')
 
     def test_instantiation(self):
         self.assertIsInstance(self.test_list, UserList)

@@ -1,8 +1,8 @@
-if (location.pathname === '/show_profile') {
+if (location.pathname === '/show-profile') {
   $(() => {
     $logoutButton = $('button')
     $logoutButton.on('click', () => {
-      location = '/'
+      location = '/?logged_out=True'
     });
   });
 }
