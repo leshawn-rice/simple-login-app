@@ -24,6 +24,6 @@
 
 ### Unit tests for classes have been added!
 
-# Future Updates:
+# Update 2.0!
 
-### Future versions will include integration tests
+### Integration tests for view functions have been added!
