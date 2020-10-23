@@ -12,6 +12,12 @@ logged_in_user = None
 
 
 def check_auth(auth_data):
+    '''
+    Checks for matching user using auth_data. 
+    If both, returns that user and the /show-profile path.
+    If only username matches, returns None and the /?username_taken=True path. 
+    If neither, creates new user and returns it and the /show-profile path
+    '''
     [potential_user, username, password] = auth_data
 
     logged_in_user = None
