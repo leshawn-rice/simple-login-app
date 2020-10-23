@@ -9,10 +9,20 @@ app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 class LoginViewsTestCase(TestCase):
 
     def tearDown(self):
+        '''
+        Overwrites users.txt with generic user info
+        '''
         with open('users.txt', 'w') as file:
             file.write('username:Password1:01/01/0001 at 00.00.00\n')
 
     def test_login_form(self):
+        '''
+        Assertions:
+                    Index path is '/'
+                    Index status code is 200 (ok)
+                    The response contains HTML that holds the correct form
+                    The response contains HTML that closes the form
+        '''
         with app.test_client() as client:
             response = client.get('/')
             response_html = response.get_data(as_text=True)
@@ -24,6 +34,16 @@ class LoginViewsTestCase(TestCase):
             self.assertIn('</form>', response_html)
 
     def test_authenticate_login(self):
+        '''
+        Assertions (New Username | Existing Username & Correct Password):
+                    Auth path is '/authenticate-login'
+                    Auth status code is 302 (redirect)
+                    The response(redirect) location includes '/show-profile'
+        Assertions (Existing Username & Incorrect Password):
+                    Auth path is '/authenticate-login'
+                    Auth status code is 302 (redirect)
+                    The response(redirect) location includes '/?username_taken=True'
+        '''
         with app.test_client() as client:
             # New username
             response = client.post(
@@ -46,6 +66,13 @@ class LoginViewsTestCase(TestCase):
             self.assertIn('/show-profile', response.location)
 
     def test_show_profile(self):
+        '''
+        Assertions:
+                    Profile path is '/show-profile'
+                    Profile status code is 200 (ok)
+                    The response contains HTML that holds the correct username
+                    The response contains HTML that holds a correct footer
+        '''
         with app.test_client() as client:
             response = client.post(
                 '/authenticate-login', data={'username': 'testusername', 'password': 'testpassword'}, follow_redirects=True)
